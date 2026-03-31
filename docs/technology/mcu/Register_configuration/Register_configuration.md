@@ -38,18 +38,33 @@ typedef struct {
     uint8_t reserved7  : 1; // Bit 7: 未用
 } OSCCON_Bits_t;
 
+// 4. 联合体定义
+typedef union {
+    uint8_t all;
+    OSCCON_Bits_t bits;
+} OSCCON_Union_t;
 ```
 
 ## 使用方法（代码示例）
 ```c
-void OSCCON_INIT(void) {
+// 5. 函数实现
+uint8_t OSCCON_INIT(void) {
+    OSCCON_Union_t temp_union = {.all = 0;} // 使用联合体作为临时变量
     
-    OSCCON_Bits_t temp_cfg; // 1. 定义一个临时变量
+    // 配置位域
+    temp_union.bits.SWDTEN = 0;
+    temp_union.bits.IRCF = IRCF_FOSC_DIV_4;
     
-    // 2. 配置
-    temp_cfg.SWDTEN = 0;
-    temp_cfg.IRCF = IRCF_FOSC_DIV_4;
-    
-    OSCCON = temp_cfg.all;  // 3. 一次性写入寄存器
+    OSCCON = temp_union.all; // 一次性写入物理寄存器
+
+    temp_union.all = OSCCON; // 重新读取物理寄存器的值到联合体
+
+    // 检查读取的值是否符合预期
+    if(temp_union.bits.IRCF == IRCF_FOSC_DIV_4){
+        return 0; // 成功
+    }
+    else {
+        return 1; // 失败
+    }
 }
 ```
