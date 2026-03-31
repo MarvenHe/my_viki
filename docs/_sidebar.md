@@ -1,6 +1,7 @@
--**首页**
-  -[欢迎回来](README.md)
+-**首页**<br>
 
--**编程技术**
-  -[C语言](technology/language-c/language_c.md)
+  -[欢迎回来](README.md)<br>
+
+-**编程技术**<br>
+  -[C语言](technology/language-c/language_c.md)<br>
   -[RF433](technology/rf433/rf433.md)
