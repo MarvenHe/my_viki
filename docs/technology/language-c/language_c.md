@@ -11,24 +11,33 @@
 通常，结构体在.h文件中声明，然后在.c文件中定义，
 如果需要在其它的.c文件中使用本结构体变量，则需要在.h文件中定义为外部变量。
 
-#### 应用举例
+#### 应用举例 1
 ```c
-struct Student {
-    char name[50];
-    int age;
-    float score;
+struct sysdat_t {
+    uint8_t flag :1 ; // 定义为位域，对于仅需BOOL型的变量可以节约空间
+    uint8_t pwr_flag :1 ;
+    uint8_t score;
+    uint8_t name[10];
 };
+extern struct sysdat_t sysdat; //声明为外部变量以供其它.c文件使用
 
-struct Student stu1 = {"Alice", 20, 95.5};
+struct sysdat_t sysdat = {
+    .flag = 0;
+    .score = 0;
+};
 // 定义时，需要写struct关健字
+```
 
+#### 应用举例 2
+```c
 // .h定义一个结构体类型
 typedef struct sysdat_t {
     uint8_t flag :1 ; // 定义为位域，对于仅需BOOL型的变量可以节约空间
     uint8_t pwr_flag :1 ;
     uint8_t score;
+    uint8_t name[10];
 };
-extern struct key_Typedef button_pwr; //声明为外部变量以供其它.c文件使用
+extern sysdat_t sysdat; //声明为外部变量以供其它.c文件使用
 
 // .c文件中声明结构体变量
 sysdat_t sysdat; // 声明结构体变量 无需写struct关健字，可直接定义
@@ -44,11 +53,15 @@ sysdat_t* sysdat_user;
 sysdat_user = sysdat; // 给指针赋值 指向变量sysdat
 
 sysdat_t* sysdat_user = sysdat; // 定义时直接给指针赋值 指向变量sysdat
+
+sysdat_user->score = 15;  // 使用指针对结构体成员进行赋值操作
+
 ```
 
 #### 在 函数传参数时 定义结构体指针变量
 ```c
 // 这其中的 sysdat_t* 表示为结构体指针变量，指向传入的结构体地址
+// u_sysdat为函数内部的指针
 void function ( sysdat_t* u_sysdat ){
     u_sysdat->score = 15;  // 对结构体成员进行赋值操作
     if(u_sysdat->score == 15){...} // 读取结构体成员数值 
