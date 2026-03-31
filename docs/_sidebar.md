@@ -1,5 +1,5 @@
 -**首页**
-  -[欢迎回来](/)
+  -[欢迎回来](README.md)
 
 -**编程技术**
   -[C语言](technology/language-c/language_c.md)
