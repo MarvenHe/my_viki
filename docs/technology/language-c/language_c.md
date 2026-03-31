@@ -8,27 +8,60 @@
 
 #### 定义与声明
 结构体的定义描述了一个数据的“模板”，而结构体变量则是根据这个模板创建的具体实例。
+通常，结构体在.h文件中声明，然后在.c文件中定义，
+如果需要在其它的.c文件中使用本结构体变量，则需要在.h文件中定义为外部变量。
 
 #### 应用举例
 ```c
-// 定义一个结构体类型
 struct Student {
     char name[50];
     int age;
     float score;
 };
+
 struct Student stu1 = {"Alice", 20, 95.5};
 // 定义时，需要写struct关健字
 
+// .h定义一个结构体类型
 typedef struct sysdat_t {
     uint8_t flag :1 ; // 定义为位域，对于仅需BOOL型的变量可以节约空间
     uint8_t pwr_flag :1 ;
     uint8_t score;
 };
-sysdat_t sysdat; // 声明结构体变量
-// 定义时，无需写struct关健字，可直接定义
+extern struct key_Typedef button_pwr; //声明为外部变量以供其它.c文件使用
+
+// .c文件中声明结构体变量
+sysdat_t sysdat; // 声明结构体变量 无需写struct关健字，可直接定义
+
+sysdat.score = 10; // 直接使用 赋值操作
 ```
 
+#### 结构体指针变量定义
+```c
+// 定义一个结构体指针变量，它可以指向已经声明过的结构体变量 sysdat_t 的地址
+// 刚定义的时候它是没有地址的，不能使用，使用前需要给它赋值已经声明的结构体变量的地址。
+sysdat_t* sysdat_user;
+sysdat_user = sysdat; // 给指针赋值 指向变量sysdat
+
+sysdat_t* sysdat_user = sysdat; // 定义时直接给指针赋值 指向变量sysdat
+```
+
+#### 在 函数传参数时 定义结构体指针变量
+```c
+// 这其中的 sysdat_t* 表示为结构体指针变量，指向传入的结构体地址
+void function ( sysdat_t* u_sysdat ){
+    u_sysdat->score = 15;  // 对结构体成员进行赋值操作
+    if(u_sysdat->score == 15){...} // 读取结构体成员数值 
+}
+
+// 由于函数接收的是指针变量
+// 所以在调用函数时，需要把结构体变量的地址传递给函数
+function(&sysdat);
+
+// 由于函数接收的是指针变量
+// 也可以直接把指针变量 直接传递给函数
+function(sysdat_user); 
+```
 
 ### 枚举变量
 枚举类型用于定义一组具名的整数常量，它可以使代码更具可读性和可维护性。
@@ -49,8 +82,9 @@ enum Color {
     GREEN,  // 默认值为 1
     BLUE    // 默认值为 2
 };
-// 定义一个枚举变量
+// 定义一个枚举变量 并初始化
 enum Color myColor = RED;
+extern Color myColor; //.h文件中声明为外部变量以供其它.c文件使用
 
 // 2) 使用typedef定义方式，typedef将enum Color整体重命名为Color，使其成为独立类型名。
 // 也可以手动为枚举成员指定值。
