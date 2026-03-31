@@ -3,7 +3,7 @@
 > 这里是记录C语言相关知识的地方。
 
 
-### 结构体变量
+### 📚结构体变量
 结构体是 C 语言中最常用的构造类型之一，它允许我们将不同类型的数据组合在一起，形成一个有意义的整体。
 
 #### 定义与声明
@@ -76,7 +76,7 @@ function(&sysdat);
 function(sysdat_user); 
 ```
 
-### 枚举变量
+### 📚枚举变量
 枚举类型用于定义一组具名的整数常量，它可以使代码更具可读性和可维护性。
 
 #### 枚举的优点
@@ -113,3 +113,36 @@ Status Server_Status = NOT_FOUND;
 if (Server_Status == DEVICE_RUNNING) { ... }
 
 ```
+
+
+✅ :white_check_mark: 完成 / 正确
+❌ :x: 错误 / 失败
+⚠️ :warning: 警告
+💡 :bulb: 提示 / 想法
+✨ :sparkles: 新功能 / 亮点
+🚀 :rocket: 发布 / 快速
+🔥 :fire: 热门 / 重要
+❗ :exclamation: 重要提醒
+❓ :question: 问题 / 疑问
+
+开发与操作
+📝 :memo: 笔记 / 文档
+🔗 :link: 链接
+📌 :pushpin: 固定 / 置顶
+📊 :bar_chart: 数据 / 统计
+🐛 :bug: 缺陷 / 问题
+🔧 :wrench: 工具 / 设置
+⚙️ :gear: 配置
+📦 :package: 打包 / 依赖
+⬇️ :arrow_down: 下载
+⬆️ :arrow_up: 上传
+
+内容与分类
+📚 :books: 书籍 / 文档集
+💻 :computer: 电脑 / 技术
+📱 :iphone: 移动端
+🧩 :jigsaw: 插件 / 模块
+🗑️ :wastebasket: 删除
+🔒 :lock: 安全 / 锁定
+🔓 :unlock: 开放 / 解锁
+
