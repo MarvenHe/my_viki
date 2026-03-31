@@ -68,3 +68,50 @@ uint8_t OSCCON_INIT(void) {
     }
 }
 ```
+
+## 简化，把结构体装进联合体中
+C语言允许直接在 union 内部定义 struct，这就是所谓的匿名结构体  
+这样写不仅代码更紧凑，而且因为结构体没有名字，可以直接用 .bits 来访问成员，逻辑上非常清晰。
+简化后的代码  
+
+#### 这样写的好处
+代码更整洁  
+不需要先定义一个 OSCCON_Bits_t，再定义一个 OSCCON_Union_t，现在只有一个类型  
+虽然结构体没有名字，但你在联合体里给了它一个成员名 bits，所以用法完全一样.  
+
+```c
+typedef union {
+    uint8_t all;  // 用于整体读写（例如：union_var.all = 0xFF）
+    
+    // 直接在联合体内部定义结构体
+    struct {
+        uint8_t reserved0  : 1; // Bit 0
+        uint8_t SWDTEN     : 1; // Bit 1
+        uint8_t reserved2  : 2; // Bit 2-3
+        uint8_t IRCF       : 3; // Bit 4-6
+        uint8_t reserved7  : 1; // Bit 7
+    }; // 注意这里没有名字，也没有分号后的名字
+} OSCCON_Union_t; // 联合体直接叫 OSCCON_Union_t 即可
+
+uint8_t OSCCON_INIT(void) {
+    OSCCON_Union_t temp_union = {.all = 0;} // 使用联合体作为临时变量
+    
+    // ✅ 配置位域
+    temp_union.SWDTEN = 0;
+    temp_union.IRCF = IRCF_FOSC_DIV_4;
+    
+    OSCCON = temp_union.all; // 一次性写入物理寄存器
+
+    temp_union.all = OSCCON; // 重新读取物理寄存器的值到联合体
+
+    // 检查读取的值是否符合预期
+    if(temp_union.IRCF == IRCF_FOSC_DIV_4){
+        return 0; // 成功
+    }
+    else {
+        return 1; // 失败
+    }
+}
+```
+
+
