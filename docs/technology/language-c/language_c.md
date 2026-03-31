@@ -32,6 +32,7 @@ sysdat_t sysdat; // 声明结构体变量
 // 定义时，无需写struct关健字，可直接定义
 ```
 
+
 ### 枚举变量
 枚举类型用于定义一组具名的整数常量，它可以使代码更具可读性和可维护性。
 
@@ -44,19 +45,27 @@ sysdat_t sysdat; // 声明结构体变量
 使用 enum 关键字来定义枚举类型。
 
 ```c
+// 1) 使用 enum 关键字定义枚举类型
+// 不指定值，数值按顺序增加。
 enum Color {
     RED,    // 默认值为 0
     GREEN,  // 默认值为 1
     BLUE    // 默认值为 2
 };
-
-// 也可以手动为枚举成员指定值。
-enum Status {
-    OK = 200,
-    NOT_FOUND = 404,
-    SERVER_ERROR = 500
-};
-
 // 定义一个枚举变量
 enum Color myColor = RED;
+
+// 2) 使用typedef定义方式，typedef将enum Color整体重命名为Color，使其成为独立类型名。
+// 也可以手动为枚举成员指定值。
+typedef enum Status {
+    DEVICE_RUNNING = 404,
+    DEVICE_ERROR   = 500
+};
+
+// 直接以类型方式定义枚举变量
+Status Server_Status = NOT_FOUND;
+
+// 可读性高
+if (Server_Status == DEVICE_RUNNING) { ... }
+
 ```
