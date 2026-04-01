@@ -2,8 +2,7 @@
 
 欢迎来到我的个人知识库！这里是我探索世界、沉淀智慧的角落，记录着学习路上的点点滴滴，以及对生活的观察与感悟。
 
-### 💻 编程相关
-深入编程的世界，探索技术的奥秘。
+### C语言
 - [C语言](technology/language-c/language_c.md)
 - [寄存器配置](technology/mcu/Register_configuration/Register_configuration.md)
 - [RF433](technology/rf433/rf433.md)
