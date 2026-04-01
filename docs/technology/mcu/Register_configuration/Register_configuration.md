@@ -90,7 +90,21 @@ C语言允许直接在 union 内部定义 struct，这就是匿名结构体<br>
 虽然结构体没有名字，但你在联合体里给了它一个成员名 bits，所以用法完全一样。<br>
 
 #### 使用方法（代码示例）
+H文件 对联合体&结构体进行声明。<br>
 ```c
+// 查看手册，根据OSCCON寄存器 定义枚举
+// 这样做的好处是代码自解释，不需要去查手册就能知道每个值代表什么
+typedef enum {
+    IRCF_32KHZ        = 0b000, // 32kHz 低频内部振荡器
+    IRCF_FOSC_DIV_64  = 0b001, // Fosc / 64
+    IRCF_FOSC_DIV_32  = 0b010, // Fosc / 32
+    IRCF_FOSC_DIV_16  = 0b011, // Fosc / 16
+    IRCF_FOSC_DIV_8   = 0b100, // Fosc / 8
+    IRCF_FOSC_DIV_4   = 0b101, // Fosc / 4 (默认)
+    IRCF_FOSC_DIV_2   = 0b110, // Fosc / 2
+    IRCF_FOSC_DIV_0   = 0b111  // Fosc (全速)
+} OSCCON_IRCF_t;
+
 typedef union {
     uint8_t all;  // 用于整体读写（例如：union_var.all = 0xFF）
     
@@ -103,7 +117,10 @@ typedef union {
         uint8_t reserved7  : 1; // Bit 7
     }; // 注意这里没有名字，也没有分号后的名字
 } OSCCON_Union_t; // 联合体直接叫 OSCCON_Union_t 即可
+```
 
+C文件 在函数中使用。<br>
+```c
 uint8_t OSCCON_INIT(void) {
     OSCCON_Union_t temp_union = {.all = 0;} // 使用联合体作为临时变量
     
@@ -124,5 +141,10 @@ uint8_t OSCCON_INIT(void) {
     }
 }
 ```
-
+<br>
+实际操作中会遇到同一个功能，会有多个寄存器需要配置的情况。<br>
+例如：ADC芯片配置，会涉及采样时钟、ADC参考电压、PGA倍数等参数。<br>
+test!!<br>
+test2!!<br>
+test3!!<br>
 
