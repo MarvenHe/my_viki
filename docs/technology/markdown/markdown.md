@@ -68,9 +68,17 @@ __参考式链接：__ 先定义一个引用，然后在链接中使用该引用
 <br>
 
 #### __6. 代码 (Code)__
-行内代码：使用反引号    包裹。<br>
+行内代码：使用反引号`包裹代码前后。<br>
 这里是 `inline code` 示例。<br>
-代码块 (Fenced Code Block)：使用三个反引号 ``` 开始和结束代码块，并可指定语言。<br>
+<br>
+代码块 (Fenced Code Block)：<br>
+使用三个反引号 开始和结束代码块，并可指定语言。<br>
+```代码语言<br>
+print("Hello, Markdown!")<br>
+...<br>
+代码内容<br>
+```<br>
+
 ```python
 print("Hello, Markdown!")
 ```
