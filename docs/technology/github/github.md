@@ -1,6 +1,6 @@
 ## Github 仓库使用
 
-#### 关联本地仓库与 GitHub 远程仓库
+### 关联本地仓库与 GitHub 远程仓库
 
 如果已经有一个本地项目，需要将其与 GitHub 上创建的仓库进行关联。<br>
 
@@ -19,7 +19,7 @@ bash终端符> git remote add origin https://github.com/你的GitHub用户名/my
 <br>
 
 
-#### 本地修改内容并推送到 GitHub
+### 本地修改内容并推送到 GitHub
 
 当你对本地代码进行了修改，可以按照以下流程将更改同步到 GitHub。<br>
 
@@ -31,12 +31,11 @@ bash终端符> git status<br>
 添加单个文件: git add <文件名><br>
 添加所有修改过的文件: git add .   或者  git add -A<br>
 
-
 ##### 3.提交更改
 将暂存区的文件正式提交到本地仓库，并附上本次提交的说明信息。<br>
 git commit -m "这里写本次提交的描述，例如：修复了一个bug，或者添加了新功能"<br>
 
-#### 后续推送
+### 后续推送
 以后再有修改，重复 第 2 步 (add) -> 第 3 步 (commit) -> git push 即可。<br>
 git bash终端执行
 git add .<br>
