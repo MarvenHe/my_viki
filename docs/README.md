@@ -8,6 +8,7 @@
 ## 📂 MCU相关
 - [寄存器配置](technology/mcu/Register_configuration/Register_configuration.md)
 - [RF433](technology/rf433/rf433.md)
+- [github仓库使用](technology/github/github.md)
 
 ## 📂 生活随笔
 - [生活随笔](life/life.md)
