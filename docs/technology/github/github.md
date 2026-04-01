@@ -5,9 +5,9 @@
 如果已经有一个本地项目，需要将其与 GitHub 上创建的仓库进行关联。<br>
 
 1.在 GitHub 上创建一个新仓库<br>
-登录 GitHub，点击右上角的 + 号，选择 New repository。<br>
-填写仓库名称（例如 my-project），然后点击 Create repository。<br>
-请勿勾选 "Initialize this repository with a README"，因为我们将在本地初始化并推送。<br>
+- 登录 GitHub，点击右上角的 + 号，选择 New repository。<br>
+- 填写仓库名称（例如 my-project），然后点击 Create repository。<br>
+- 请勿勾选 "Initialize this repository with a README"，因为我们将在本地初始化并推送。<br>
 <br>
 2.将本地项目与远程仓库关联<br>
 - 打开你的项目所在的本地文件夹，在终端（或命令行）中执行以下命令：
