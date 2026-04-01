@@ -1,14 +1,18 @@
-# 欢迎来到我的知识库
+# 📚 我的知识宝库
 
-> 这里是我记录学习、生活和思考的地方。
+欢迎来到我的个人知识库！这里是我探索世界、沉淀智慧的角落，记录着学习路上的点点滴滴，以及对生活的观察与感悟。
 
-### C语言
+### 💻 编程相关
+深入编程的世界，探索技术的奥秘。
 - [C语言](technology/language-c/language_c.md)
-
-### MCU相关
 - [寄存器配置](technology/mcu/Register_configuration/Register_configuration.md)
 - [RF433](technology/rf433/rf433.md)
-- [github仓库使用](technology/github/github.md)
+- [Github仓库使用](technology/github/github.md)<br><br>
+  
 
-### 生活随笔
+### 🌱 生活随笔
+记录生活中的美好瞬间与深刻思考,分享日常感悟、人生哲思与生活点滴。
 - [生活随笔](life/life.md)
+  > _路径: `life/life.md`_
+  
+  
